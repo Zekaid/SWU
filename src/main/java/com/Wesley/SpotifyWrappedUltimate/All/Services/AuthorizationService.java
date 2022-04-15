@@ -17,7 +17,7 @@ public class AuthorizationService {
     String auth_header_val;
     String client_id = "b21f900d2dba494a8877950764f8171b";
     String client_secret = "8b421e25e6b44a65940a041c55c72bd6";
-    String redirect_uri = "https://spotifywrappedultimate.herokuapp.com/callback";
+    String redirect_uri = "http://localhost:8080/callback";
     String scope_user = "user-read-private%20user-read-email%20user-top-read";
 
     //The start of our website

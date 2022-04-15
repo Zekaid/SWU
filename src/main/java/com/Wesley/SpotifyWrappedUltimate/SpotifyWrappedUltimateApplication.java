@@ -14,7 +14,7 @@ public class SpotifyWrappedUltimateApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpotifyWrappedUltimateApplication.class, args);
 	}
-	@GetMapping("/")
+	@GetMapping("")
 	public ModelAndView start(ModelMap model){
 		model.addAttribute("attribute", "redirectWithRedirectPrefix");
 		return new ModelAndView("redirect:/login.html", model);
