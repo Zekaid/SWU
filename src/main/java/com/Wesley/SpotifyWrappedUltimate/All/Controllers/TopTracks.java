@@ -1,14 +1,7 @@
 package com.Wesley.SpotifyWrappedUltimate.All.Controllers;
 
 import com.Wesley.SpotifyWrappedUltimate.All.Services.AuthorizationService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.*;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.util.MultiValueMapAdapter;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,7 +40,7 @@ public class TopTracks {
     }
 
     @RequestMapping(path = "/api/top/tracks", produces = MediaType.APPLICATION_JSON_VALUE + "; charset=utf-8", method = RequestMethod.GET)
-    public ResponseEntity<ArrayList<Pair>> Metadata(RestTemplate rest_template) throws JSONException {
+    public ResponseEntity<ArrayList<Pair>> Metadata(RestTemplate rest_template) {
         int curr_time = LocalTime.now().toSecondOfDay();
         if (curr_time - auth.GetCurrTime() > 3600 || curr_time - auth.GetCurrTime() < 0){
             auth.RefreshToken(new RestTemplate(), new HttpHeaders());

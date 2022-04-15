@@ -1,7 +1,6 @@
 package com.Wesley.SpotifyWrappedUltimate.All.Controllers;
 
 import com.Wesley.SpotifyWrappedUltimate.All.Services.AuthorizationService;
-import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -24,7 +23,7 @@ public class Authorization {
     }
 
     @RequestMapping(value = "/callback", method = RequestMethod.GET)
-    public ResponseEntity AccessToken(@RequestParam("code") String code, RestTemplate rest_template) throws URISyntaxException, JSONException {
+    public ResponseEntity AccessToken(@RequestParam("code") String code, RestTemplate rest_template) throws URISyntaxException {
         auth.AccessToken(code, rest_template);
         URI uri = new URI("http://localhost:8080/info.html");
         //Redirects users to the login page from Spotify API

@@ -1,9 +1,7 @@
 package com.Wesley.SpotifyWrappedUltimate.All.Services;
 
-import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.stereotype.Service;
 import org.springframework.http.*;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -39,7 +37,7 @@ public class AuthorizationService {
     }
 
     //If authorized, redirects to /callback and returns authorization code
-    public void AccessToken(String code, RestTemplate rest_template) throws JSONException {
+    public void AccessToken(String code, RestTemplate rest_template) {
         HttpHeaders headers = new HttpHeaders();
         //Encode information and create required header
         auth_header_val = "Basic " + Base64.getEncoder().encodeToString((client_id+":"+client_secret).getBytes());
