@@ -2,10 +2,12 @@ package com.Wesley.SpotifyWrappedUltimate.All.Controllers;
 
 import com.Wesley.SpotifyWrappedUltimate.All.Services.AuthorizationService;
 import org.springframework.http.*;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import java.net.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.net.*;
 
 @RestController
 public class Authorization {
@@ -23,11 +25,10 @@ public class Authorization {
     }
 
     @RequestMapping(value = "/callback", method = RequestMethod.GET)
-    public ResponseEntity AccessToken(@RequestParam("code") String code, RestTemplate rest_template) throws URISyntaxException {
+    public ModelAndView AccessToken(@RequestParam("code") String code, RestTemplate rest_template, ModelMap model) throws URISyntaxException {
         auth.AccessToken(code, rest_template);
-        URI uri = new URI("http://localhost:8080/info.html");
-        //Redirects users to the login page from Spotify API
-        return ResponseEntity.status(HttpStatus.FOUND).location(uri).build();
+        model.addAttribute("attribute", "redirectWithRedirectPrefix");
+        return new ModelAndView("redirect:/info.html", model);
     }
 
 }

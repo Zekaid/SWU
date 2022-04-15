@@ -1,12 +1,10 @@
 package com.Wesley.SpotifyWrappedUltimate.All.Controllers;
 
 import com.Wesley.SpotifyWrappedUltimate.All.Services.AuthorizationService;
-import org.springframework.http.*;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.net.URI;
-import java.net.URISyntaxException;
-
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class Logout {
@@ -19,10 +17,9 @@ public class Logout {
     }
 
     @GetMapping("/logout")
-    public ResponseEntity logout() throws URISyntaxException {
+    public ModelAndView logout(ModelMap model) {
         auth.Destroy();
-        URI uri = new URI("http://localhost:8080/login.html");
-
-        return ResponseEntity.status(HttpStatus.FOUND).location(uri).build();
+        model.addAttribute("attribute", "redirectWithRedirectPrefix");
+        return new ModelAndView("redirect:/login.html", model);
     }
 }
