@@ -28,8 +28,12 @@ class Single {
 @RestController
 public class TopArtists {
 
-    @Autowired
+    final
     AuthorizationService auth;
+
+    public TopArtists(AuthorizationService auth) {
+        this.auth = auth;
+    }
 
     @GetMapping("/api/top/artists")
     public ResponseEntity<ArrayList<Single>> Metadata(RestTemplate rest_template){

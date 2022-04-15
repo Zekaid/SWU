@@ -15,8 +15,12 @@ import java.util.HashMap;
 @RestController
 public class Logout {
 
-    @Autowired
+    final
     AuthorizationService auth;
+
+    public Logout(AuthorizationService auth) {
+        this.auth = auth;
+    }
 
     @GetMapping("/logout")
     public ResponseEntity logout() throws URISyntaxException {

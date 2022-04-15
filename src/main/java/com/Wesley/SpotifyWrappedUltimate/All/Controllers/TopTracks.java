@@ -39,9 +39,12 @@ class Pair {
 @RestController
 public class TopTracks {
 
-
-    @Autowired
+    final
     AuthorizationService auth;
+
+    public TopTracks(AuthorizationService auth) {
+        this.auth = auth;
+    }
 
     @RequestMapping(path = "/api/top/tracks", produces = MediaType.APPLICATION_JSON_VALUE + "; charset=utf-8", method = RequestMethod.GET)
     public ResponseEntity<ArrayList<Pair>> Metadata(RestTemplate rest_template) throws JSONException {
